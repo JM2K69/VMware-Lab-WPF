@@ -1,0 +1,1243 @@
+
+<Controls:MetroWindow
+   Name="MainPanel"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+   xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+   xmlns:controlzEx="urn:controlzex"
+   xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+   xmlns:simpleChildWindow="clr-namespace:MahApps.Metro.SimpleChildWindow;assembly=MahApps.Metro.SimpleChildWindow"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   Width="950"
+   Height="500"
+   BorderThickness="1"
+   GlowBrush="{DynamicResource AccentColorBrush}"
+   RenderOptions.ClearTypeHint="Enabled"
+   TextOptions.TextFormattingMode="Display"
+   Title="VMware vSphere Lab"
+   Topmost="True"
+   WindowStartupLocation="CenterScreen"
+   WindowStyle="None">
+   <Window.Resources>
+      <ResourceDictionary>
+         <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml"/>
+         </ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary>
+   </Window.Resources>
+   <Controls:MetroWindow.LeftWindowCommands>
+      <Controls:WindowCommands>
+         <Button Name="Github" ToolTip="Github Link JM2K69">
+            <StackPanel Orientation="Horizontal">
+               <iconPacks:PackIconFontAwesome Kind="GithubBrands"/>
+            </StackPanel>
+         </Button>
+      </Controls:WindowCommands>
+   </Controls:MetroWindow.LeftWindowCommands>
+   <Controls:MetroWindow.RightWindowCommands>
+      <Controls:WindowCommands>
+         <StackPanel Orientation="Horizontal">
+            <Button Name="Info" Margin="-5 0 -5 0" ToolTip="About">
+               <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconEntypo Kind="Info"/>
+               </StackPanel>
+            </Button>
+            <Button Name="Theme" Margin="-5 0 0 0" ToolTip="Switch Theme">
+               <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconFontAwesome Kind="SyncSolid"/>
+               </StackPanel>
+            </Button>
+            <Button Name="BaseColor" Margin="-5 0 0 0" ToolTip="Switch BaseColor">
+               <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconRPGAwesome Kind="PerspectiveDiceRandom"/>
+               </StackPanel>
+            </Button>
+            <Button Name="Settings" Margin="-5 0 0 0" ToolTip="Settings">
+               <StackPanel Orientation="Horizontal">
+                  <iconPacks:PackIconUnicons Kind="Setting"/>
+               </StackPanel>
+            </Button>
+         </StackPanel>
+      </Controls:WindowCommands>
+   </Controls:MetroWindow.RightWindowCommands>
+   <Grid>
+      <StackPanel>
+         <StackPanel HorizontalAlignment="Center" Margin="20,20,10,10" Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+               <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                  <Image Width="80" Height="80" Source="logo.png">
+                  </Image>
+                  <Label
+                     Margin="5,10,0,0"
+                     Content="VMware"
+                     FontSize="30"
+                     Foreground="#FF444444">
+                  </Label>
+                  <Label
+                     Margin="0,10,0,0"
+                     Content="vSphere"
+                     FontSize="30"
+                     Foreground="#5980F1">
+                  </Label>
+                  <Label
+                     Margin="0,10,0,0"
+                     Content="Lab"
+                     FontSize="30"
+                     Foreground="#FF444444">
+                  </Label>
+               </StackPanel>
+               <StackPanel HorizontalAlignment="Center" Margin="60,-25,0,0" Orientation="Horizontal">
+                  <Label
+                     Margin="15,0,0,0"
+                     Content="with"
+                     FontSize="20"
+                     FontWeight="Thin"
+                     Foreground="#FF444444">
+                  </Label>
+                  <Label
+                     Margin="0,0,0,0"
+                     Content="VMware"
+                     FontSize="20"
+                     FontWeight="Thin"
+                     Foreground="#5980F1">
+                  </Label>
+                  <Label
+                     Margin="0,0,0,0"
+                     Content="Workstation"
+                     FontSize="20"
+                     FontWeight="Thin"
+                     Foreground="#FF444444">
+                  </Label>
+               </StackPanel>
+            </StackPanel>
+         </StackPanel>
+         <StackPanel>
+            <Canvas Grid.Row="1">
+               <TabControl
+                  Name="Tabcontrol"
+                  Width="900"
+                  Height="325"
+                  HorizontalAlignment="Left"
+                  Margin="10 10 10 10 "
+                  VerticalAlignment="Top"
+                  Controls:TabControlHelper.Underlined="SelectedTabItem"
+                  TabStripPlacement="Left">
+                  <TabItem>
+                     <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                           <StackPanel Orientation="Horizontal">
+                              <iconPacks:PackIconFontAwesome
+                                 Width="24"
+                                 Height="24"
+                                 Margin="0 12 0 0 "
+                                 Kind="QuestionCircleRegular"/>
+                              <Label Margin="2 0 0 0" Content="Info" Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                           </StackPanel>
+                        </DataTemplate>
+                     </TabItem.HeaderTemplate>
+                     <StackPanel Margin="10">
+                        <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                           <iconPacks:PackIconModern
+                              Width="20"
+                              Height="20"
+                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                              Kind="BoxLayered"/>
+                           <Label
+                              Width="145"
+                              Margin="10,0,0,0"
+                              Content="Workstation version :"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                           <Label
+                              Name="Workstation_versionV"
+                              Width="185"
+                              Margin="10,0,0,5"
+                              Content="15.1.1"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                        </StackPanel>
+                        <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                           <iconPacks:PackIconFontAwesome
+                              Width="20"
+                              Height="20"
+                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                              Kind="WindowsBrands"/>
+                           <Label
+                              Name="OS_Type"
+                              Width="145"
+                              Margin="10,0,0,5"
+                              Content="Windows Version :"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                           <Label
+                              Name="OS_TypeV"
+                              Width="185"
+                              Margin="10,0,0,5"
+                              Content="Windows 10 "
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                        </StackPanel>
+                        <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                           <iconPacks:PackIconMaterialDesign
+                              Width="20"
+                              Height="20"
+                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                              Kind="ViewModule"/>
+                           <Label
+                              Width="145"
+                              Margin="10,0,0,0"
+                              Content="VMxtoolkit"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                           <Label
+                              Width="185"
+                              Margin="10,0,0,0"
+                              Content="True"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                        </StackPanel>
+                     </StackPanel>
+                  </TabItem>
+                  <TabItem>
+                     <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                           <StackPanel Orientation="Horizontal">
+                              <iconPacks:PackIconUnicons
+                                 Width="24"
+                                 Height="24"
+                                 Margin="0 12 0 0 "
+                                 Kind="Setting"/>
+                              <Label Margin="2 0 0 0" Content="Settings" Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                           </StackPanel>
+                        </DataTemplate>
+                     </TabItem.HeaderTemplate>
+                     <StackPanel Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                           <iconPacks:PackIconUnicons
+                              Width="20"
+                              Height="20"
+                              Margin="0 5 0 0"
+                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                              Kind="Setting"/>
+                           <Label
+                              Margin="10,0,0,0"
+                              Content="vSphere lab version"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                           <Controls:ToggleSwitch
+                              Name="LabV"
+                              Margin="85 0 0 5"
+                              FontWeight="Thin"
+                              OffContent="6.x"
+                              OnContent="7.x"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                           <iconPacks:PackIconUnicons
+                              Width="20"
+                              Height="20"
+                              Margin="0 5 0 0"
+                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                              Kind="Setting"/>
+                           <Label
+                              Margin="10,0,0,0"
+                              Content="Deploy TrueNasCore Appliance "
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                           <Controls:ToggleSwitch
+                              Name="iSCSI"
+                              Margin="10 0 0 5"
+                              FontWeight="Thin"
+                              OffContent="Off"
+                              OnContent="On"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                           <iconPacks:PackIconUnicons
+                              Width="20"
+                              Height="20"
+                              Margin="0 5 0 0"
+                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                              Kind="Setting"/>
+                           <Label
+                              Margin="10,0,0,0"
+                              Content="Deploy vOneCloud Appliance "
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                           <Controls:ToggleSwitch
+                              Name="Cloud"
+                              Margin="20 0 0 5"
+                              FontWeight="Thin"
+                              OffContent="Off"
+                              OnContent="On"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                           <iconPacks:PackIconUnicons
+                              Width="20"
+                              Height="20"
+                              Margin="0 5 0 0"
+                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                              Kind="Setting"/>
+                           <Label
+                              Margin="10,0,0,0"
+                              Content="Deploy Tanzu"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                           <Controls:ToggleSwitch
+                              Name="Tanzu"
+                              Margin="125 0 0 5"
+                              FontWeight="Thin"
+                              IsEnabled="False"
+                              OffContent="Off"
+                              OnContent="On"/>
+                        </StackPanel>
+                        <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+                           <iconPacks:PackIconUnicons
+                              Width="20"
+                              Height="20"
+                              Margin="0 5 0 0"
+                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                              Kind="Setting"/>
+                           <Label
+                              Width="190"
+                              Margin="10,0,0,5"
+                              Content="VMware Workstation VMnet"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                           <ComboBox Name="WRKVMNET" Margin="30 0 0 0"/>
+                        </StackPanel>
+                        <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+                           <iconPacks:PackIconUnicons
+                              Width="20"
+                              Height="20"
+                              Margin="0 5 0 0"
+                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                              Kind="Setting"/>
+                           <Label
+                              Width="210"
+                              Margin="10,0,0,5"
+                              Content="Lab folder"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                           <Label
+                              Name="Folder"
+                              Width="180"
+                              Margin="5,0,0,5"
+                              Content="Not set"
+                              FontSize="15"
+                              FontWeight="Thin">
+                           </Label>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" FlowDirection="LeftToRight" Orientation="Horizontal">
+                           <Button
+                              Name="Set_Folder"
+                              Width="130"
+                              Height="40"
+                              Margin="5,5,0,0"
+                              Background="#FF1FB900"
+                              BorderThickness="0"
+                              Foreground="White">
+                              <Button.Content>
+                                 <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterialDesign
+                                       Width="18"
+                                       Height="18"
+                                       Margin="0 2 2 0"
+                                       Kind="Folder"/>
+                                    <Label Content="Set Folder" FontSize="11" Foreground="White"/>
+                                 </StackPanel>
+                              </Button.Content>
+                           </Button>
+                        </StackPanel>
+                     </StackPanel>
+                  </TabItem>
+                  <TabItem>
+                     <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                           <StackPanel Orientation="Horizontal">
+                              <iconPacks:PackIconModern
+                                 Width="24"
+                                 Height="24"
+                                 Margin="0 12 0 0 "
+                                 Kind="BoxLayered"/>
+                              <Label Margin="5 0 0 0" Content="ESXI" Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                           </StackPanel>
+                        </DataTemplate>
+                     </TabItem.HeaderTemplate>
+                     <StackPanel Margin="10" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                           <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                              <Label Margin="4,5,0,0" Content="Number ESXI :" FontWeight="Bold">
+                              </Label>
+                              <Controls:NumericUpDown
+                                 Name="NB_ESXI"
+                                 Width="110"
+                                 Height="25"
+                                 Margin="38,0,0,0"
+                                 Interval="1"
+                                 Maximum="6"
+                                 Minimum="3"
+                                 Style="{DynamicResource MahApps.Styles.Control.WindowCommands}"/>
+                           </StackPanel>
+                           <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                              <Label
+                                 Width="130"
+                                 Margin="4,0,0,0"
+                                 Content="ESXI Name :"
+                                 FontWeight="Bold">
+                              </Label>
+                              <TextBox Name="NESXI_N" Width="110" Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"/>
+                           </StackPanel>
+                           <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                              <Label
+                                 Width="130"
+                                 Margin="4,0,0,0"
+                                 Content="Network :"
+                                 FontWeight="Bold">
+                              </Label>
+                              <TextBox Name="Network_V" Width="110" Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"/>
+                           </StackPanel>
+                           <StackPanel Margin="0 15 0 0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                              <iconPacks:PackIconMaterial
+                                 Width="32"
+                                 Height="32"
+                                 Margin="4,0,0,0"
+                                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                 Kind="Harddisk"/>
+                              <Label Margin="4,10,0,0" Content="Add disks :" FontWeight="Bold">
+                              </Label>
+                              <Controls:NumericUpDown
+                                 Name="NB_Disk"
+                                 Width="110"
+                                 Height="25"
+                                 Margin="22,0,0,0"
+                                 Interval="1"
+                                 Maximum="6"
+                                 Minimum="0"
+                                 Style="{DynamicResource MahApps.Styles.Control.WindowCommands}"/>
+                           </StackPanel>
+                           <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                              <iconPacks:PackIconMaterial
+                                 Width="32"
+                                 Height="32"
+                                 Margin="4,0,0,0"
+                                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                 Kind="Memory"/>
+                              <Label Margin="4,10,0,0" Content="VM size:" FontWeight="Bold">
+                              </Label>
+                              <ComboBox
+                                 Name="VM_Size"
+                                 Width="110"
+                                 Height="25"
+                                 Margin="35 0 0 0"/>
+                           </StackPanel>
+                        </StackPanel>
+                        <StackPanel Margin="20 0 0 0" FlowDirection="LeftToRight" Orientation="Vertical">
+                           <StackPanel Orientation="Horizontal">
+                              <iconPacks:PackIconModern
+                                 Width="32"
+                                 Height="32"
+                                 Margin="4,0,0,0"
+                                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                 Kind="HardwareCpu"/>
+                              <Label Margin="4,10,0,0" Content="ESXI vCPU :" FontWeight="Bold">
+                              </Label>
+                              <Label
+                                 Name="ESXICPUV"
+                                 Width="185"
+                                 Height="25"
+                                 Margin="10,5,0,0"
+                                 Content="3">
+                              </Label>
+                           </StackPanel>
+                           <StackPanel Orientation="Horizontal">
+                              <iconPacks:PackIconMaterial
+                                 Width="32"
+                                 Height="32"
+                                 Margin="4,30,0,0"
+                                 Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                 Kind="Memory"/>
+                              <Label Margin="4,40,0,0" Content="ESXI RAM :" FontWeight="Bold">
+                              </Label>
+                              <Label
+                                 Name="ESXIRAMV"
+                                 Width="185"
+                                 Height="25"
+                                 Margin="10,40,0,0"
+                                 Content="3">
+                              </Label>
+                           </StackPanel>
+                        </StackPanel>
+                     </StackPanel>
+                  </TabItem>
+                  <TabItem>
+                     <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                           <StackPanel Orientation="Horizontal">
+                              <iconPacks:PackIconMaterial
+                                 Width="24"
+                                 Height="24"
+                                 Margin="0 12 0 0 "
+                                 Kind="Server"/>
+                              <Label Margin="2 0 0 0" Content="VCSA" Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                           </StackPanel>
+                        </DataTemplate>
+                     </TabItem.HeaderTemplate>
+                     <StackPanel Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                           <StackPanel Orientation="Vertical">
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconMaterial Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Wan"/>
+                                 <Label Width="110" Margin="4,0,0,0" Content="Network type">
+                                 </Label>
+                                 <ComboBox
+                                    Name="Choose_Network"
+                                    Width="185"
+                                    Height="25"
+                                    Margin="10,0,0,0"
+                                    SelectedIndex="0"
+                                    Text="Choose">
+                                    <ComboBoxItem Name="Choose_Static" Content="Static">
+                                    </ComboBoxItem>
+                                 </ComboBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconModern Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Network"/>
+                                 <Label Width="110" Margin="4,0,0,0" Content="IP Address ">
+                                 </Label>
+                                 <TextBox
+                                    Name="IPAddress"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,0,0,0"
+                                    IsReadOnly="True">
+                                 </TextBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconMaterial Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Gate"/>
+                                 <Label Width="110" Margin="4,0,0,0" Content="Gateway">
+                                 </Label>
+                                 <TextBox
+                                    Name="Gateway"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,0,0,0"
+                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}">
+                                 </TextBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconEntypo Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Mask"/>
+                                 <Label Width="110" Margin="4,0,0,0" Content="Network Mask">
+                                 </Label>
+                                 <TextBox
+                                    Name="Network_Mask"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,0,0,0">
+                                 </TextBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconMaterial Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Dns"/>
+                                 <Label Width="110" Margin="4,5,0,0" Content="DNS Server(s)">
+                                 </Label>
+                                 <TextBox
+                                    Name="DNS_Server"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,0,0,0"
+                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}">
+                                 </TextBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconFontAwesome Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="CogsSolid"/>
+                                 <Label Width="110" Margin="4,0,0,0" Content="Deployment Type">
+                                 </Label>
+                                 <TextBox
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,0,0,0"
+                                    IsEnabled="False"
+                                    Text="embedded">
+                                 </TextBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconFontAwesome Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="CogsSolid"/>
+                                 <Label Width="110" Margin="4,0,0,0" Content="SSH">
+                                 </Label>
+                                 <ComboBox
+                                    Name="SSH"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,0,0,0"
+                                    SelectedIndex="0"
+                                    Text="Choose">
+                                    <ComboBoxItem> True
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                    <ComboBoxItem> False
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                 </ComboBox>
+                              </StackPanel>
+                           </StackPanel>
+                           <StackPanel Margin="15 2 0 0" Orientation="Vertical">
+                              <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconMaterial Margin="0 8 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Domain"/>
+                                 <Label Width="110" Margin="4,5,0,0" Content="Site Name">
+                                 </Label>
+                                 <TextBox
+                                    Name="Site_Name"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,7,0,0"
+                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                                    Controls:TextBoxHelper.Watermark="JM2K69">
+                                 </TextBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconMaterial Margin="0 7 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Domain"/>
+                                 <Label Width="110" Margin="4,5,0,0" Content="Domain Name">
+                                 </Label>
+                                 <TextBox
+                                    Name="Domain_Name"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,0,0,0"
+                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                                    Controls:TextBoxHelper.Watermark="vsphere.local">
+                                 </TextBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconFontAwesome Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="CogsSolid"/>
+                                 <Label Width="110" Margin="4,0,0,0" Content="CEIP">
+                                 </Label>
+                                 <ComboBox
+                                    Name="CEIP"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,0,0,0"
+                                    SelectedIndex="0"
+                                    Text="Choose">
+                                    <ComboBoxItem> True
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                    <ComboBoxItem> False
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                 </ComboBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconZondicons Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Time"/>
+                                 <Label Width="110" Margin="4,0,0,0" Content="NTP">
+                                 </Label>
+                                 <ComboBox
+                                    Name="NTP"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="10,0,0,0"
+                                    SelectedIndex="0"
+                                    Text="Choose">
+                                    <ComboBoxItem>0.europe.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>1.europe.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>2.europe.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>3.europe.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>0.us.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>1.us.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>2.us.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>3.us.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </ComboBoxItem>
+                                 </ComboBox>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconModern
+                                    Width="20"
+                                    Margin="0 5 0 0"
+                                    Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                    Kind="InterfacePassword"/>
+                                 <Label Width="90" Margin="4,0,0,0" Content="Root Password">
+                                 </Label>
+                                 <PasswordBox
+                                    Name="Passwd_R"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="25,0,0,0"
+                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                                    Controls:TextBoxHelper.IsWaitingForData="True"
+                                    Controls:TextBoxHelper.Watermark="Root Password"
+                                    PasswordChar="*"
+                                    Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"/>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconModern
+                                    Width="20"
+                                    Margin="0 5 0 0"
+                                    Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                    Kind="InterfacePassword"/>
+                                 <Label Width="95" Margin="4,0,0,0" Content="VCSA Password">
+                                 </Label>
+                                 <PasswordBox
+                                    Name="Passwd_VCSA"
+                                    Width="185"
+                                    Height="27"
+                                    Margin="20,0,0,0"
+                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                                    Controls:TextBoxHelper.IsWaitingForData="True"
+                                    Controls:TextBoxHelper.Watermark="VCSA Password"
+                                    PasswordChar="*"
+                                    Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"/>
+                              </StackPanel>
+                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                 <iconPacks:PackIconModern
+                                    Width="20"
+                                    Margin="0 5 0 0"
+                                    Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                    Kind="InterfacePassword"/>
+                                 <Label Width="95" Margin="4,0,0,0" Content="Type">
+                                 </Label>
+                                 <ComboBox Name="TypeVCSA" Width="185" Margin="20 0 0 0">
+                                 </ComboBox>
+                              </StackPanel>
+                           </StackPanel>
+                        </StackPanel>
+                     </StackPanel>
+                  </TabItem>
+                  <TabItem>
+                     <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                           <StackPanel Orientation="Horizontal">
+                              <iconPacks:PackIconOcticons
+                                 Width="24"
+                                 Height="24"
+                                 Margin="0 12 0 0 "
+                                 Kind="Beaker"/>
+                              <Label Margin="2 0 0 0" Content="Scenario" Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                           </StackPanel>
+                        </DataTemplate>
+                     </TabItem.HeaderTemplate>
+                     <StackPanel Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                           <StackPanel Orientation="Horizontal">
+                              <DataGrid
+                                 Name="VMFound"
+                                 Width="550"
+                                 Height="180"
+                                 Margin="2,2,2,2"
+                                 BorderThickness="1"
+                                 ColumnWidth="150"
+                                 ItemsSource="{Binding}"
+                                 SelectionMode="Extended">
+                                 <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding VMXName}" Header="VMXName"/>
+                                    <DataGridTextColumn Binding="{Binding State}" Header="State"/>
+                                    <DataGridTextColumn Binding="{Binding Scenario}" Header="Scenario"/>
+                                    <DataGridTextColumn Binding="{Binding Path}" Header="Path"/>
+                                    <DataGridTextColumn Binding="{Binding Config}" Header="Config"/>
+                                 </DataGrid.Columns>
+                              </DataGrid>
+                              <StackPanel Margin="15 0 0 0 " Orientation="Vertical">
+                                 <StackPanel Orientation="Horizontal">
+                                    <Button
+                                       Name="FindVM"
+                                       Width="40"
+                                       Height="40"
+                                       Margin="3"
+                                       ToolTip="Search VMs">
+                                       <iconPacks:PackIconMaterial
+                                          Width="24"
+                                          Height="24"
+                                          Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                          Kind="DatabaseSearch"/>
+                                    </Button>
+                                 </StackPanel>
+                                 <Button
+                                    Name="PlayVM"
+                                    Width="40"
+                                    Height="40"
+                                    Margin="3"
+                                    ToolTip="Start VMs">
+                                    <iconPacks:PackIconOcticons
+                                       Width="24"
+                                       Height="24"
+                                       Foreground="#FF47D00F"
+                                       Kind="Play"/>
+                                 </Button>
+                                 <Button
+                                    Name="StopVM"
+                                    Width="40"
+                                    Height="40"
+                                    Margin="3"
+                                    ToolTip="Stop VMs">
+                                    <iconPacks:PackIconMaterial
+                                       Width="24"
+                                       Height="24"
+                                       Foreground="#FFFB0303"
+                                       Kind="StopCircleOutline"/>
+                                 </Button>
+                                 <Button
+                                    Name="InfoVM"
+                                    Width="40"
+                                    Height="40"
+                                    Margin="3"
+                                    IsEnabled="False"
+                                    ToolTip="Info VM">
+                                    <iconPacks:PackIconMaterialDesign
+                                       Width="24"
+                                       Height="24"
+                                       Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                       Kind="Info"/>
+                                 </Button>
+                              </StackPanel>
+                           </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                           <Label
+                              Margin="0 10 0 0"
+                              Content="Scenario :"
+                              FontSize="20"
+                              FontWeight="Thin"/>
+                           <Label
+                              Name="Scenario"
+                              Margin="0 18 0 0"
+                              Content=""
+                              FontSize="12"/>
+                        </StackPanel>
+                     </StackPanel>
+                  </TabItem>
+                  <TabItem Name="TiSCSI" Visibility="Collapsed">
+                     <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                           <StackPanel Orientation="Horizontal">
+                              <iconPacks:PackIconUnicons
+                                 Width="24"
+                                 Height="24"
+                                 Margin="0 12 0 0 "
+                                 Kind="ServerNetworkAlt"/>
+                              <Label Margin="2 0 0 0" Content="iSCSI" Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                           </StackPanel>
+                        </DataTemplate>
+                     </TabItem.HeaderTemplate>
+                     <StackPanel Margin="10">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
+                           <Image Width="140" Height="140" Source="TrueNAS_Logos.png">
+                           </Image>
+                        </StackPanel>
+                     </StackPanel>
+                  </TabItem>
+                  <TabItem Name="TvOneCloud" Visibility="Collapsed">
+                     <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                           <StackPanel Orientation="Horizontal">
+                              <iconPacks:PackIconMaterialDesign
+                                 Width="24"
+                                 Height="24"
+                                 Margin="0 12 0 0 "
+                                 Kind="Cloud"/>
+                              <Label Margin="2 0 0 0" Content="vOneCloud" Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                           </StackPanel>
+                        </DataTemplate>
+                     </TabItem.HeaderTemplate>
+                     <StackPanel Margin="5" VerticalAlignment="Center">
+                        <StackPanel HorizontalAlignment="Center" Margin="-40 -60 0 0" Orientation="Horizontal">
+                           <Label
+                              Margin="0,0,0,0"
+                              Content="Soon"
+                              FontSize="60"
+                              FontWeight="Thin"
+                              Foreground="#FF444444">
+                           </Label>
+                           <Label
+                              Margin="0,0,0,0"
+                              Content="Available"
+                              FontSize="60"
+                              FontWeight="Thin"
+                              Foreground="#5980F1">
+                           </Label>
+                        </StackPanel>
+                     </StackPanel>
+                  </TabItem>
+               </TabControl>
+            </Canvas>
+         </StackPanel>
+      </StackPanel>
+      <StackPanel
+         HorizontalAlignment="Left"
+         Margin="0 0 30 15 "
+         VerticalAlignment="Bottom"
+         Orientation="Vertical">
+      </StackPanel>
+      <StackPanel
+         HorizontalAlignment="Right"
+         Margin="15 0 30 15 "
+         VerticalAlignment="Bottom"
+         Orientation="Horizontal">
+         <Button
+            Name="Wizard"
+            Width="182"
+            Height="40"
+            HorizontalAlignment="Right"
+            Margin="0,0,0,0"
+            Background="RoyalBlue"
+            BorderThickness="0"
+            Content="Wizard"
+            Foreground="White">
+         </Button>
+         <Button
+            Name="Cancel"
+            Width="182"
+            Height="40"
+            Margin="6,0,0,0"
+            Background="#FFDB2A2A"
+            BorderThickness="0"
+            Content="Close"
+            Foreground="White">
+         </Button>
+      </StackPanel>
+      <simpleChildWindow:ChildWindow
+         Name="CInfo"
+         AllowMove="True"
+         BorderBrush="{DynamicResource MahApps.Brushes.AccentBase}"
+         BorderThickness="1"
+         ChildWindowHeight="250"
+         ChildWindowWidth="300"
+         CloseByEscape="True"
+         EnableDropShadow="True"
+         GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
+         HorizontalContentAlignment="Stretch"
+         IsAutoCloseEnabled="True"
+         OverlayBrush="Transparent"
+         Padding="15"
+         Title="About"
+         VerticalContentAlignment="Stretch">
+         <simpleChildWindow:ChildWindow.Icon>
+            <iconPacks:PackIconEntypo
+               Width="22"
+               Height="22"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
+               Kind="Info"/>
+         </simpleChildWindow:ChildWindow.Icon>
+         <Grid>
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+               <TextBlock
+                  Margin="20"
+                  FontSize="36"
+                  FontWeight="Thin"
+                  Text="@JM2K69"/>
+               <TextBlock Margin="20" Text="WMware Lab Workstation"/>
+               <TextBlock Margin="45 0 0 0" Text="version Alpha"/>
+            </StackPanel>
+         </Grid>
+      </simpleChildWindow:ChildWindow>
+      <simpleChildWindow:ChildWindow
+         Name="CSettings"
+         AllowMove="True"
+         BorderBrush="{DynamicResource MahApps.Brushes.AccentBase}"
+         BorderThickness="1"
+         ChildWindowHeight="250"
+         ChildWindowWidth="350"
+         EnableDropShadow="False"
+         GlowBrush="{DynamicResource AccentColorBrush}"
+         IsModal="True"
+         OverlayBrush="{DynamicResource AccentColorBrush}"
+         ShowCloseButton="True"
+         Title="Settings">
+         <simpleChildWindow:ChildWindow.Icon>
+            <iconPacks:PackIconUnicons
+               Width="18"
+               Height="18"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
+               Kind="Setting"/>
+         </simpleChildWindow:ChildWindow.Icon>
+         <Grid>
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+               <TextBlock
+                  Margin="20"
+                  FontSize="36"
+                  FontWeight="Thin"
+                  Text="Wizard"/>
+               <StackPanel HorizontalAlignment="Center" Margin="0 15 0 15" Orientation="Horizontal">
+                  <Button
+                     Name="Load_default"
+                     Width="140"
+                     Height="40"
+                     HorizontalAlignment="Right"
+                     Background="RoyalBlue"
+                     BorderThickness="0"
+                     Foreground="White">
+                     <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                           <iconPacks:PackIconUnicons Width="18" Height="18" Kind="Process"/>
+                           <Label FontSize="11" Foreground="White">LOAD DEFAULT
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           </Label>
+                        </StackPanel>
+                     </Button.Content>
+                  </Button>
+                  <Button
+                     Name="Save_conf"
+                     Width="140"
+                     Height="40"
+                     Margin="10,0,0,0"
+                     Background="#FF1FB900"
+                     BorderThickness="0"
+                     Foreground="White">
+                     <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                           <iconPacks:PackIconMaterialDesign Width="18" Height="18" Kind="Save"/>
+                           <Label FontSize="11" Foreground="White">SAVE CONF
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           </Label>
+                        </StackPanel>
+                     </Button.Content>
+                  </Button>
+               </StackPanel>
+               <Button
+                  Name="Load_Cconf"
+                  Width="180"
+                  Height="40"
+                  Background="#FF7600B9"
+                  BorderThickness="0"
+                  Foreground="White">
+                  <Button.Content>
+                     <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconUnicons Width="18" Height="18" Kind="Process"/>
+                        <Label FontSize="11" Foreground="White">LOAD CUSTOM CONF
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        </Label>
+                     </StackPanel>
+                  </Button.Content>
+               </Button>
+            </StackPanel>
+         </Grid>
+      </simpleChildWindow:ChildWindow>
+      <simpleChildWindow:ChildWindow
+         Name="WWizard"
+         AllowMove="True"
+         BorderBrush="{DynamicResource MahApps.Brushes.AccentBase}"
+         BorderThickness="1"
+         ChildWindowHeight="250"
+         ChildWindowWidth="350"
+         EnableDropShadow="False"
+         GlowBrush="{DynamicResource AccentColorBrush}"
+         IsModal="True"
+         OverlayBrush="{DynamicResource AccentColorBrush}"
+         ShowCloseButton="True"
+         Title="Settings">
+         <simpleChildWindow:ChildWindow.Icon>
+            <iconPacks:PackIconUnicons
+               Width="18"
+               Height="18"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
+               Kind="Setting"/>
+         </simpleChildWindow:ChildWindow.Icon>
+         <Grid>
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+               <TextBlock
+                  Margin="20"
+                  FontSize="36"
+                  FontWeight="Thin"
+                  Text="Settings for the Lab"/>
+               <StackPanel HorizontalAlignment="Center" Margin="0 15 0 15" Orientation="Horizontal">
+                  <Button
+                     Name="Create_M"
+                     Width="140"
+                     Height="40"
+                     HorizontalAlignment="Right"
+                     Background="RoyalBlue"
+                     BorderThickness="0"
+                     Foreground="White">
+                     <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                           <iconPacks:PackIconUnicons Width="18" Height="18" Kind="Process"/>
+                           <Label Content="Create Master" FontSize="11" Foreground="White"/>
+                        </StackPanel>
+                     </Button.Content>
+                  </Button>
+                  <Button
+                     Name="Create_L"
+                     Width="140"
+                     Height="40"
+                     Margin="10,0,0,0"
+                     Background="#FF1FB900"
+                     BorderThickness="0"
+                     Foreground="White">
+                     <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                           <iconPacks:PackIconMaterialDesign Width="18" Height="18" Kind="Save"/>
+                           <Label Content="Create Lab" FontSize="11" Foreground="White"/>
+                        </StackPanel>
+                     </Button.Content>
+                  </Button>
+               </StackPanel>
+            </StackPanel>
+         </Grid>
+      </simpleChildWindow:ChildWindow>
+   </Grid>
+</Controls:MetroWindow>
