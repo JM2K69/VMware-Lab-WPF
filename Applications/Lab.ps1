@@ -367,10 +367,11 @@ $WPF_TypeVCSA.Add_SelectionChanged({
 
     if ($WPF_TypeVCSA.SelectedItem -eq "Full"){
         New-Log -message "==> VCSA deployment is set to full automated"
-
+        $Script:VCSAType = "Full"
     }
     if ($WPF_TypeVCSA.SelectedItem -eq "Config"){
         New-Log -message "==> VCSA deployment is set to deploy only  the you need to configure manually"
+        $Script:VCSAType = "ConfigOnly"
 
     }
 })
@@ -511,7 +512,7 @@ New-Log -message "------------------------------------------------"
         DNS1 = "1.1.1.1"
         Nodeprefix = "VCSA"
         DefaultGateway = $WPF_Gateway.Text
-        Type = $WPF_TypeVCSA.SelectedItem
+        Type = $Script:VCSAType
     }
 
     $Filter = "OVA files (*.OVA)|*.OVA"
