@@ -9,7 +9,7 @@
    xmlns:simpleChildWindow="clr-namespace:MahApps.Metro.SimpleChildWindow;assembly=MahApps.Metro.SimpleChildWindow"
    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
    Width="950"
-   Height="500"
+   Height="560"
    BorderThickness="1"
    GlowBrush="{DynamicResource AccentColorBrush}"
    RenderOptions.ClearTypeHint="Enabled"
@@ -62,7 +62,7 @@
          </StackPanel>
       </Controls:WindowCommands>
    </Controls:MetroWindow.RightWindowCommands>
-   <Grid>
+ <Grid>
       <StackPanel>
          <StackPanel HorizontalAlignment="Center" Margin="20,20,10,10" Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
@@ -118,7 +118,7 @@
                <TabControl
                   Name="Tabcontrol"
                   Width="900"
-                  Height="325"
+                  Height="440"
                   HorizontalAlignment="Left"
                   Margin="10 10 10 10 "
                   VerticalAlignment="Top"
@@ -239,26 +239,6 @@
                               FontWeight="Thin"
                               OffContent="6.x"
                               OnContent="7.x"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                           <iconPacks:PackIconUnicons
-                              Width="20"
-                              Height="20"
-                              Margin="0 5 0 0"
-                              Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                              Kind="Setting"/>
-                           <Label
-                              Margin="10,0,0,0"
-                              Content="Deploy TrueNasCore Appliance "
-                              FontSize="15"
-                              FontWeight="Thin">
-                           </Label>
-                           <Controls:ToggleSwitch
-                              Name="iSCSI"
-                              Margin="10 0 0 5"
-                              FontWeight="Thin"
-                              OffContent="Off"
-                              OnContent="On"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                            <iconPacks:PackIconUnicons
@@ -496,344 +476,675 @@
                         </DataTemplate>
                      </TabItem.HeaderTemplate>
                      <StackPanel Margin="10">
-                        <StackPanel Orientation="Horizontal">
-                           <StackPanel Orientation="Vertical">
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconMaterial Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Wan"/>
-                                 <Label Width="110" Margin="4,0,0,0" Content="Network type">
-                                 </Label>
-                                 <ComboBox
-                                    Name="Choose_Network"
-                                    Width="185"
-                                    Height="25"
-                                    Margin="10,0,0,0"
-                                    SelectedIndex="0"
-                                    Text="Choose">
-                                    <ComboBoxItem Name="Choose_Static" Content="Static">
-                                    </ComboBoxItem>
-                                 </ComboBox>
+                        <TabControl
+                           Name="TabVCSA"
+                           Width="900"
+                           Height="375"
+                           HorizontalAlignment="Left"
+                           Margin="10 10 10 10 "
+                           VerticalAlignment="Top"
+                           Controls:TabControlHelper.Underlined="SelectedTabItem"
+                           TabStripPlacement="Top">
+                           <TabItem>
+                              <TabItem.HeaderTemplate>
+                                 <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                       <iconPacks:PackIconUnicons
+                                          Width="16"
+                                          Height="16"
+                                          Margin="0 10 0 0 "
+                                          Kind="Setting"/>
+                                       <Label
+                                          Margin="2 0 0 0"
+                                          Content="Settings"
+                                          FontSize="16"
+                                          Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                    </StackPanel>
+                                 </DataTemplate>
+                              </TabItem.HeaderTemplate>
+                              <StackPanel Margin="10">
+                                 <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconUnicons
+                                       Width="20"
+                                       Height="20"
+                                       Margin="0 5 0 0"
+                                       Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                       Kind="Setting"/>
+                                    <Label
+                                       Margin="10,0,0,0"
+                                       Content="Use DNS Server "
+                                       FontSize="15"
+                                       FontWeight="Thin">
+                                    </Label>
+                                    <Controls:ToggleSwitch
+                                       Name="DNS_SRV"
+                                       Margin="10 0 0 5"
+                                       FontWeight="Thin"
+                                       OffContent="Off"
+                                       OnContent="On"/>
+                                 </StackPanel>
+                                 <GroupBox Width="350" HorizontalAlignment="Left">
+                                    <GroupBox.HeaderTemplate>
+                                       <DataTemplate>
+                                          <StackPanel Height="20" Orientation="Horizontal">
+                                             <iconPacks:PackIconUnicons
+                                                Width="14"
+                                                Height="14"
+                                                Margin="0 2 0 0"
+                                                Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                                                Kind="Setting"/>
+                                             <Label
+                                                Margin="0 -4 "
+                                                FontSize="13"
+                                                FontWeight="Thin"
+                                                Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}">Storage
+                                             
+                                             </Label>
+                                          </StackPanel>
+                                       </DataTemplate>
+                                    </GroupBox.HeaderTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                       <StackPanel Orientation="Horizontal">
+                                          <iconPacks:PackIconUnicons
+                                             Width="20"
+                                             Height="20"
+                                             Margin="0 5 0 0"
+                                             Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                             Kind="Setting"/>
+                                          <Label
+                                             Margin="10,0,0,0"
+                                             Content="Deploy NFS Appliance"
+                                             FontSize="15"
+                                             FontWeight="Thin">
+                                          </Label>
+                                          <Controls:ToggleSwitch
+                                             Name="NFS_Appliance"
+                                             Margin="70 0 0 5"
+                                             FontWeight="Thin"
+                                             OffContent="Off"
+                                             OnContent="On"
+                                             IsEnabled="False"/>
+                                       </StackPanel>
+                                       <StackPanel Orientation="Horizontal">
+                                          <iconPacks:PackIconUnicons
+                                             Width="20"
+                                             Height="20"
+                                             Margin="0 5 0 0"
+                                             Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                             Kind="Setting"/>
+                                          <Label
+                                             Margin="10,0,0,0"
+                                             Content="Deploy TrueNasCore Appliance "
+                                             FontSize="15"
+                                             FontWeight="Thin">
+                                          </Label>
+                                          <Controls:ToggleSwitch
+                                             Name="iSCSI"
+                                             Margin="10 0 0 5"
+                                             FontWeight="Thin"
+                                             OffContent="Off"
+                                             OnContent="On"
+                                             IsEnabled="False"/>
+                                       </StackPanel>
+                                    </StackPanel>
+                                 </GroupBox>
                               </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconModern Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Network"/>
-                                 <Label Width="110" Margin="4,0,0,0" Content="IP Address ">
-                                 </Label>
-                                 <TextBox
-                                    Name="IPAddress"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,0,0,0"
-                                    IsReadOnly="True">
-                                 </TextBox>
+                           </TabItem>
+                           <TabItem>
+                              <TabItem.HeaderTemplate>
+                                 <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                       <iconPacks:PackIconMaterial
+                                          Width="16"
+                                          Height="16"
+                                          Margin="0 10 0 0 "
+                                          Kind="Server"/>
+                                       <Label
+                                          Margin="2 0 0 0"
+                                          Content="VCSA"
+                                          FontSize="16"
+                                          Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                    </StackPanel>
+                                 </DataTemplate>
+                              </TabItem.HeaderTemplate>
+                              <StackPanel Margin="5">
+                                 <StackPanel Margin="10">
+                                    <StackPanel Orientation="Horizontal">
+                                       <StackPanel Orientation="Vertical">
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconMaterial Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Wan"/>
+                                             <Label Width="110" Margin="4,0,0,0" Content="Network type">
+                                             </Label>
+                                             <ComboBox
+                                                Name="Choose_Network"
+                                                Width="185"
+                                                Height="25"
+                                                Margin="10,0,0,0"
+                                                SelectedIndex="0"
+                                                Text="Choose">
+                                                <ComboBoxItem Name="Choose_Static" Content="Static">
+                                                </ComboBoxItem>
+                                             </ComboBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconModern Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Network"/>
+                                             <Label Width="110" Margin="4,0,0,0" Content="IP Address ">
+                                             </Label>
+                                             <TextBox
+                                                Name="IPAddress"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,0,0,0"
+                                                IsReadOnly="True">
+                                             </TextBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconMaterial Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Gate"/>
+                                             <Label Width="110" Margin="4,0,0,0" Content="Gateway">
+                                             </Label>
+                                             <TextBox
+                                                Name="Gateway"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,0,0,0"
+                                                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}">
+                                             </TextBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconEntypo Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Mask"/>
+                                             <Label Width="110" Margin="4,0,0,0" Content="Network Mask">
+                                             </Label>
+                                             <TextBox
+                                                Name="Network_Mask"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,0,0,0">
+                                             </TextBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconMaterial Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Dns"/>
+                                             <Label Width="110" Margin="4,5,0,0" Content="DNS Server(s)">
+                                             </Label>
+                                             <TextBox
+                                                Name="DNS_Server"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,0,0,0"
+                                                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}">
+                                             </TextBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconFontAwesome Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="CogsSolid"/>
+                                             <Label Width="110" Margin="4,0,0,0" Content="Deployment Type">
+                                             </Label>
+                                             <TextBox
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,0,0,0"
+                                                IsEnabled="False"
+                                                Text="embedded">
+                                             </TextBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconFontAwesome Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="CogsSolid"/>
+                                             <Label Width="110" Margin="4,0,0,0" Content="SSH">
+                                             </Label>
+                                             <ComboBox
+                                                Name="SSH"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,0,0,0"
+                                                SelectedIndex="0"
+                                                Text="Choose">
+                                                <ComboBoxItem> True
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                                <ComboBoxItem> False
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                             </ComboBox>
+                                          </StackPanel>
+                                       </StackPanel>
+                                       <StackPanel Margin="15 2 0 0" Orientation="Vertical">
+                                          <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconMaterial Margin="0 8 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Domain"/>
+                                             <Label Width="110" Margin="4,5,0,0" Content="Site Name">
+                                             </Label>
+                                             <TextBox
+                                                Name="Site_Name"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,7,0,0"
+                                                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                                                Controls:TextBoxHelper.Watermark="JM2K69">
+                                             </TextBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconMaterial Margin="0 7 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Domain"/>
+                                             <Label Width="110" Margin="4,5,0,0" Content="Domain Name">
+                                             </Label>
+                                             <TextBox
+                                                Name="Domain_Name"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,0,0,0"
+                                                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                                                Controls:TextBoxHelper.Watermark="vsphere.local">
+                                             </TextBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconFontAwesome Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="CogsSolid"/>
+                                             <Label Width="110" Margin="4,0,0,0" Content="CEIP">
+                                             </Label>
+                                             <ComboBox
+                                                Name="CEIP"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,0,0,0"
+                                                SelectedIndex="0"
+                                                Text="Choose">
+                                                <ComboBoxItem> True
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                                <ComboBoxItem> False
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                             </ComboBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconZondicons Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Time"/>
+                                             <Label Width="110" Margin="4,0,0,0" Content="NTP">
+                                             </Label>
+                                             <ComboBox
+                                                Name="NTP"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="10,0,0,0"
+                                                SelectedIndex="0"
+                                                Text="Choose">
+                                                <ComboBoxItem>0.europe.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>1.europe.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>2.europe.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>3.europe.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>0.us.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>1.us.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>2.us.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>3.us.pool.ntp.org
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                
+                                                </ComboBoxItem>
+                                             </ComboBox>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconModern
+                                                Width="20"
+                                                Margin="0 5 0 0"
+                                                Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                                Kind="InterfacePassword"/>
+                                             <Label Width="90" Margin="4,0,0,0" Content="Root Password">
+                                             </Label>
+                                             <PasswordBox
+                                                Name="Passwd_R"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="25,0,0,0"
+                                                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                                                Controls:TextBoxHelper.IsWaitingForData="True"
+                                                Controls:TextBoxHelper.Watermark="Root Password"
+                                                PasswordChar="*"
+                                                Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"/>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconModern
+                                                Width="20"
+                                                Margin="0 5 0 0"
+                                                Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                                Kind="InterfacePassword"/>
+                                             <Label Width="95" Margin="4,0,0,0" Content="VCSA Password">
+                                             </Label>
+                                             <PasswordBox
+                                                Name="Passwd_VCSA"
+                                                Width="185"
+                                                Height="27"
+                                                Margin="20,0,0,0"
+                                                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                                                Controls:TextBoxHelper.IsWaitingForData="True"
+                                                Controls:TextBoxHelper.Watermark="VCSA Password"
+                                                PasswordChar="*"
+                                                Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"/>
+                                          </StackPanel>
+                                          <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                             <iconPacks:PackIconModern
+                                                Width="20"
+                                                Margin="0 5 0 0"
+                                                Foreground="{DynamicResource MahApps.Brushes.Accent}"
+                                                Kind="InterfacePassword"/>
+                                             <Label Width="95" Margin="4,0,0,0" Content="Type">
+                                             </Label>
+                                             <ComboBox Name="TypeVCSA" Width="185" Margin="20 0 0 0">
+                                             </ComboBox>
+                                          </StackPanel>
+                                       </StackPanel>
+                                    </StackPanel>
+                                 </StackPanel>
                               </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconMaterial Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Gate"/>
-                                 <Label Width="110" Margin="4,0,0,0" Content="Gateway">
-                                 </Label>
-                                 <TextBox
-                                    Name="Gateway"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,0,0,0"
-                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}">
-                                 </TextBox>
+                           </TabItem>
+                           <TabItem Name="TiSCSI" Visibility="Collapsed">
+                              <TabItem.HeaderTemplate>
+                                 <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                       <iconPacks:PackIconUnicons
+                                          Width="16"
+                                          Height="16"
+                                          Margin="0 10 0 0 "
+                                          Kind="ServerNetworkAlt"/>
+                                       <Label
+                                          Margin="2 0 0 0"
+                                          Content="iSCSI"
+                                          FontSize="16"
+                                          Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                    </StackPanel>
+                                 </DataTemplate>
+                              </TabItem.HeaderTemplate>
+                              <StackPanel Margin="10">
+                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
+                                    <Image Width="140" Height="140" Source="TrueNAS_Logos.png">
+                                    </Image>
+                                 </StackPanel>
                               </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconEntypo Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Mask"/>
-                                 <Label Width="110" Margin="4,0,0,0" Content="Network Mask">
-                                 </Label>
-                                 <TextBox
-                                    Name="Network_Mask"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,0,0,0">
-                                 </TextBox>
+                           </TabItem>
+                           <TabItem Name="TDNS" Visibility="Visible">
+                              <TabItem.HeaderTemplate>
+                                 <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                       <iconPacks:PackIconMaterial
+                                          Width="16"
+                                          Height="16"
+                                          Margin="0 10 0 0"
+                                          Kind="Dns"/>
+                                       <Label
+                                          Margin="2 0 0 0"
+                                          Content="DNS Applicance"
+                                          FontSize="16"
+                                          Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                                    </StackPanel>
+                                 </DataTemplate>
+                              </TabItem.HeaderTemplate>
+                              <StackPanel Margin="10">
+                                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical">
+                                    <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                       <Label
+                                          Width="130"
+                                          Margin="4,0,0,0"
+                                          Content="Network :"
+                                          FontWeight="Bold">
+                                       </Label>
+                                       <TextBox
+                                          Name="Network_dns"
+                                          Width="110"
+                                          IsReadOnly="True"
+                                          Text="{Binding ElementName=Network_V, Path=Text}"/>
+                                           <Label
+                                          Width="105"
+                                          Margin="15,0,0,0"
+                                          Content="Root Password"
+                                          FontWeight="Bold">
+                                             </Label>
+                                             <PasswordBox
+                                                Name="Passwd_dns"
+                                                Width="110"
+                                                Height="27"
+                                                Margin="15,0,0,0"
+                                                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                                                Controls:TextBoxHelper.IsWaitingForData="True"
+                                                Controls:TextBoxHelper.Watermark="Root Password"
+                                                PasswordChar="*"
+                                                Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"/>
+                                          
+                                    </StackPanel>
+                                    <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                       <Label
+                                          Width="130"
+                                          Margin="4,0,0,0"
+                                          Content="ESXI Number"
+                                          FontWeight="Bold">
+                                       </Label>
+                                       <TextBox
+                                          Name="EsxiNumber_dns"
+                                          Width="110"
+                                          IsReadOnly="True"
+                                          Text="{Binding ElementName=NB_ESXI, Path=Value}"/>
+                                          <Label
+                                          Width="120"
+                                          Margin="15,0,0,0"
+                                          Content="Hostname"
+                                          FontWeight="Bold">
+                                       </Label>
+                                       <TextBox
+                                          Name="Hostname_dns"
+                                          Width="110"
+                                          IsReadOnly="True"
+                                          Text=""/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                       <Label
+                                          Width="130"
+                                          Margin="4,0,0,0"
+                                          Content="ESXI Name"
+                                          FontWeight="Bold">
+                                       </Label>
+                                       <TextBox
+                                          Name="ESXIName_dns"
+                                          Width="110"
+                                          IsReadOnly="True"
+                                           Text="{Binding ElementName=NESXI_N, Path=Value}"/>
+                                           <Label
+                                          Width="120"
+                                          Margin="15,0,0,0"
+                                          Content="IP Address"
+                                          FontWeight="Bold">
+                                       </Label>
+                                       <TextBox
+                                          Name="IPADDR_dns"
+                                          Width="110"
+                                          IsReadOnly="True"
+                                          Text=""/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                       <Label
+                                          Width="130"
+                                          Margin="4,0,0,0"
+                                          Content="DNS Domain"
+                                          FontWeight="Bold">
+                                       </Label>
+                                       <TextBox
+                                          Name="Domain_dns"
+                                          Width="110"
+                                          IsReadOnly="True"
+                                          Text=""/>
+                                          <Label
+                                          Width="120"
+                                          Margin="15,0,0,0"
+                                          Content="Netmask"
+                                          FontWeight="Bold">
+                                       </Label>
+                                       <TextBox
+                                          Name="Netmask_dns"
+                                          Width="110"
+                                          IsReadOnly="True"
+                                          Text=""/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+                                       <Label
+                                          Width="130"
+                                          Margin="4,0,0,0"
+                                          Content="Keyboard Layout"
+                                          FontWeight="Bold">
+                                       </Label>
+                                       <ComboBox
+                                          Name="KeyboardLayout_dns"
+                                          Width="110"/>
+                                          <Label
+                                          Width="120"
+                                          Margin="15,0,0,0"
+                                          Content="Gateway"
+                                          FontWeight="Bold">
+                                       </Label>
+                                       <TextBox
+                                          Name="Gateway_dns"
+                                          Width="110"
+                                          IsReadOnly="True"
+                                          Text=""/>
+                                    </StackPanel>
+                                 </StackPanel>
                               </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconMaterial Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Dns"/>
-                                 <Label Width="110" Margin="4,5,0,0" Content="DNS Server(s)">
-                                 </Label>
-                                 <TextBox
-                                    Name="DNS_Server"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,0,0,0"
-                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}">
-                                 </TextBox>
-                              </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconFontAwesome Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="CogsSolid"/>
-                                 <Label Width="110" Margin="4,0,0,0" Content="Deployment Type">
-                                 </Label>
-                                 <TextBox
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,0,0,0"
-                                    IsEnabled="False"
-                                    Text="embedded">
-                                 </TextBox>
-                              </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconFontAwesome Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="CogsSolid"/>
-                                 <Label Width="110" Margin="4,0,0,0" Content="SSH">
-                                 </Label>
-                                 <ComboBox
-                                    Name="SSH"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,0,0,0"
-                                    SelectedIndex="0"
-                                    Text="Choose">
-                                    <ComboBoxItem> True
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                    <ComboBoxItem> False
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                 </ComboBox>
-                              </StackPanel>
-                           </StackPanel>
-                           <StackPanel Margin="15 2 0 0" Orientation="Vertical">
-                              <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconMaterial Margin="0 8 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Domain"/>
-                                 <Label Width="110" Margin="4,5,0,0" Content="Site Name">
-                                 </Label>
-                                 <TextBox
-                                    Name="Site_Name"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,7,0,0"
-                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
-                                    Controls:TextBoxHelper.Watermark="JM2K69">
-                                 </TextBox>
-                              </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconMaterial Margin="0 7 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Domain"/>
-                                 <Label Width="110" Margin="4,5,0,0" Content="Domain Name">
-                                 </Label>
-                                 <TextBox
-                                    Name="Domain_Name"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,0,0,0"
-                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
-                                    Controls:TextBoxHelper.Watermark="vsphere.local">
-                                 </TextBox>
-                              </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconFontAwesome Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="CogsSolid"/>
-                                 <Label Width="110" Margin="4,0,0,0" Content="CEIP">
-                                 </Label>
-                                 <ComboBox
-                                    Name="CEIP"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,0,0,0"
-                                    SelectedIndex="0"
-                                    Text="Choose">
-                                    <ComboBoxItem> True
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                    <ComboBoxItem> False
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                 </ComboBox>
-                              </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconZondicons Margin="0 5 0 0" Foreground="{DynamicResource MahApps.Brushes.Accent}" Kind="Time"/>
-                                 <Label Width="110" Margin="4,0,0,0" Content="NTP">
-                                 </Label>
-                                 <ComboBox
-                                    Name="NTP"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="10,0,0,0"
-                                    SelectedIndex="0"
-                                    Text="Choose">
-                                    <ComboBoxItem>0.europe.pool.ntp.org
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                    <ComboBoxItem>1.europe.pool.ntp.org
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                    <ComboBoxItem>2.europe.pool.ntp.org
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                    <ComboBoxItem>3.europe.pool.ntp.org
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                    <ComboBoxItem>0.us.pool.ntp.org
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                    <ComboBoxItem>1.us.pool.ntp.org
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                    <ComboBoxItem>2.us.pool.ntp.org
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                    <ComboBoxItem>3.us.pool.ntp.org
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </ComboBoxItem>
-                                 </ComboBox>
-                              </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconModern
-                                    Width="20"
-                                    Margin="0 5 0 0"
-                                    Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                                    Kind="InterfacePassword"/>
-                                 <Label Width="90" Margin="4,0,0,0" Content="Root Password">
-                                 </Label>
-                                 <PasswordBox
-                                    Name="Passwd_R"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="25,0,0,0"
-                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
-                                    Controls:TextBoxHelper.IsWaitingForData="True"
-                                    Controls:TextBoxHelper.Watermark="Root Password"
-                                    PasswordChar="*"
-                                    Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"/>
-                              </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconModern
-                                    Width="20"
-                                    Margin="0 5 0 0"
-                                    Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                                    Kind="InterfacePassword"/>
-                                 <Label Width="95" Margin="4,0,0,0" Content="VCSA Password">
-                                 </Label>
-                                 <PasswordBox
-                                    Name="Passwd_VCSA"
-                                    Width="185"
-                                    Height="27"
-                                    Margin="20,0,0,0"
-                                    Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
-                                    Controls:TextBoxHelper.IsWaitingForData="True"
-                                    Controls:TextBoxHelper.Watermark="VCSA Password"
-                                    PasswordChar="*"
-                                    Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"/>
-                              </StackPanel>
-                              <StackPanel Margin="0,5,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
-                                 <iconPacks:PackIconModern
-                                    Width="20"
-                                    Margin="0 5 0 0"
-                                    Foreground="{DynamicResource MahApps.Brushes.Accent}"
-                                    Kind="InterfacePassword"/>
-                                 <Label Width="95" Margin="4,0,0,0" Content="Type">
-                                 </Label>
-                                 <ComboBox Name="TypeVCSA" Width="185" Margin="20 0 0 0">
-                                 </ComboBox>
-                              </StackPanel>
-                           </StackPanel>
-                        </StackPanel>
+                           </TabItem>
+                        </TabControl>
                      </StackPanel>
                   </TabItem>
                   <TabItem>
@@ -935,26 +1246,6 @@
                               Margin="0 18 0 0"
                               Content=""
                               FontSize="12"/>
-                        </StackPanel>
-                     </StackPanel>
-                  </TabItem>
-                  <TabItem Name="TiSCSI" Visibility="Collapsed">
-                     <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                           <StackPanel Orientation="Horizontal">
-                              <iconPacks:PackIconUnicons
-                                 Width="24"
-                                 Height="24"
-                                 Margin="0 12 0 0 "
-                                 Kind="ServerNetworkAlt"/>
-                              <Label Margin="2 0 0 0" Content="iSCSI" Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
-                           </StackPanel>
-                        </DataTemplate>
-                     </TabItem.HeaderTemplate>
-                     <StackPanel Margin="10">
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
-                           <Image Width="140" Height="140" Source="TrueNAS_Logos.png">
-                           </Image>
                         </StackPanel>
                      </StackPanel>
                   </TabItem>
@@ -1116,6 +1407,8 @@
                            
                            
                            
+                           
+                           
                            </Label>
                         </StackPanel>
                      </Button.Content>
@@ -1142,6 +1435,8 @@
                            
                            
                            
+                           
+                           
                            </Label>
                         </StackPanel>
                      </Button.Content>
@@ -1158,6 +1453,8 @@
                      <StackPanel Orientation="Horizontal">
                         <iconPacks:PackIconUnicons Width="18" Height="18" Kind="Process"/>
                         <Label FontSize="11" Foreground="White">LOAD CUSTOM CONF
+                        
+                        
                         
                         
                         
