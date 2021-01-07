@@ -43,7 +43,7 @@ if ($global:ReadmeDisplay -ne $true){Write-host "If you need to reference this d
 write-host "Found the following interactable elements from our form" -ForegroundColor Cyan
 get-variable *WPF*
 }
-#Get-FormVariables
+Get-FormVariables
 
 Import-Module "$Global:pathPanel\vmxtoolkit\4.5.3.1\vmxtoolkit.psm1" -Force
 #########################################################################
@@ -420,6 +420,23 @@ $WPF_IPAddress.Text = $DESXI_param.subnet + ".80"
 $WPF_NB_Disk.Value = 0
 $WPF_NB_Disk.IsReadOnly = $True
 $WPF_NTP.IsEnabled = $false
+$WPF_TDNS.Visibility = "Collapsed"
+$WPF_DNS_SRV.Add_Toggled({
+
+    if ($WPF_DNS_SRV.IsOn -eq $true)
+    {
+        $WPF_TDNS.Visibility = "Visible"
+
+    }
+    elseif ($WPF_DNS_SRV.IsOn -eq $false) {
+        
+        $WPF_TDNS.Visibility = "Collapsed"
+
+
+    }
+
+
+})
 
 $WPF_Cancel.Add_Click({
 
@@ -1341,12 +1358,12 @@ ForEach ($Item in $VMs)
 
     
 })
-$windowcode = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
-$asyncwindow = Add-Type -MemberDefinition $windowcode -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
-$null = $asyncwindow::ShowWindowAsync((Get-Process -PID $pid).MainWindowHandle, 0)
+#$windowcode = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
+#$asyncwindow = Add-Type -MemberDefinition $windowcode -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
+#$null = $asyncwindow::ShowWindowAsync((Get-Process -PID $pid).MainWindowHandle, 0)
  
 # Force garbage collection just to start slightly lower RAM usage.
-[System.GC]::Collect()
+#[System.GC]::Collect()
 
 
 $Form.ShowDialog() | Out-Null
