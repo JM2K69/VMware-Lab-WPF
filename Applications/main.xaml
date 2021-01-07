@@ -1091,7 +1091,6 @@
                                        <TextBox
                                           Name="IPADDR_dns"
                                           Width="110"
-                                          IsReadOnly="True"
                                           Text=""/>
                                     </StackPanel>
                                     <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
@@ -1104,7 +1103,6 @@
                                        <TextBox
                                           Name="Domain_dns"
                                           Width="110"
-                                          IsReadOnly="True"
                                           Text=""/>
                                           <Label
                                           Width="120"
@@ -1115,7 +1113,6 @@
                                        <TextBox
                                           Name="Netmask_dns"
                                           Width="110"
-                                          IsReadOnly="True"
                                           Text=""/>
                                     </StackPanel>
                                     <StackPanel Margin="0,15,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
@@ -1137,7 +1134,6 @@
                                        <TextBox
                                           Name="Gateway_dns"
                                           Width="110"
-                                          IsReadOnly="True"
                                           Text=""/>
                                     </StackPanel>
                                  </StackPanel>
